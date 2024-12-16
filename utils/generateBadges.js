@@ -8,7 +8,7 @@ async function renderKnownBadge(license) {
   if (typeof license != "string") { return console.error("License argument must be a string") };
   if (!/^[a-zA-Z0-9 .,/_\-()]*$/.test(license)) { return console.error("License contains an unallowed character") };
 
-  const dataString = await readFile("../assets/data/badges.json", "utf-8")
+  const dataString = await readFile("assets/data/badges.json", "utf-8")
 
   // Parse the JSON file
   const data = JSON.parse(dataString)
@@ -56,8 +56,7 @@ export default async function renderLicenseSection(licenseData) {
   // Create an empty array that will contain the markdown badges
   const graphicsUpdate = [];
   // This will be returned
-  let finalTemplate =
-    `## Licensing\n`
+  let finalTemplate = ``;
 
   // Loop through everything that was input
 

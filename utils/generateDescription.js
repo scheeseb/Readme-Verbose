@@ -50,7 +50,9 @@ async function createAIModel() {
 }
 
 
-async function generateVerboseDescription(prompt) {
+export default async function generateVerboseDescription(prompt) {
+    createAIModel()
+
     const response = await ollama.chat({
         model: 'CodeGeneration:latest',
         messages: [{ role: 'user', content: prompt }],
@@ -58,16 +60,16 @@ async function generateVerboseDescription(prompt) {
     return response.message.content
 }
 
-export default function generateDescription() {
-    createAIModel()
+// function generateDescription() {
 
-    return promptForDescription()
-        .then(prompt => {
-            console.log(`prompt: ${prompt}`)
-            generateVerboseDescription(prompt)
-                .then(description => {
-                    console.log(`Description: ${description}`)
-                    return description
-                })
-        })
-}
+
+//     return promptForDescription()
+//         .then(prompt => {
+//             console.log(`prompt: ${prompt}`)
+//             generateVerboseDescription(prompt)
+//                 .then(description => {
+//                     console.log(`Description: ${description}`)
+//                     return description
+//                 })
+//         })
+// }

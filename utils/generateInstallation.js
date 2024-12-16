@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 
 
-export default function promptForInstallSection() {
+export default function generateInstallSection() {
     return inquirer.prompt([
         {
             "name": "gitHTTPS",
