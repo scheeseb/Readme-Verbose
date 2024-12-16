@@ -1,5 +1,5 @@
 import inquirer from 'inquirer';
-import { appendFile, readFile } from 'node:fs/promises';
+import { appendFile } from 'node:fs/promises';
 
 function askMe() {
     inquirer.prompt([
@@ -29,9 +29,9 @@ function askMe() {
                 "url": "${answers.urlLink}"
             }`;
             // Adds the new entry
-            appendFile("../assets/data/badges.json", jsonObject, "utf-8")
+            appendFile("/data/badges.json", jsonObject, "utf-8")
         })
-        .then(e => {
+        .then(() => {
             askMe()
         })
 }
