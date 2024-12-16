@@ -1,5 +1,5 @@
 import { makeBadge } from 'badge-maker'
-import { readFile, writeFile, appendFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
