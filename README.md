@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-1. [Overview](#overview)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Contributing](#contributing)
-5. [License](#license)
+1. [Overview](#Overview)
+2. [Installation](#Installation)
+3. [Usage](#Usage)
+4. [Contributing](#Contributing)
+5. [License](#License)
 
 ## Overview
 
