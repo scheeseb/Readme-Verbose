@@ -84,6 +84,3 @@ class NewBadge {
     this.url = url
   }
 }
-
-renderLicenseSection(["GNU GPL v3", "The MIT License", new NewBadge("tester", "https://chatgpt.com/c/675e7f9b-ee1c-8011-a7b2-275ea1f8ec9f")])
-  .then(markdown => console.log(markdown))

@@ -1,40 +1,36 @@
-# \<Title>
+# bootcampChallenges
 
 ## Table of Contents
 
-1. Overview
-2. Installation
-3. Usage
-4. Licenses
-5. Contributing
-6. Tests
+1. [Overview](#overview)
+2. [Installation](#Installation)
+3. [Usage](#Usage)
+4. [Licenses](#Licenses)
+5. [Contributing](#Contributing)
+6. [Tests](#tests)
+
+   [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
 
-\<Badge Section>
-
-\<Ai generated Description>
+This is a very good description
 
 ## Installation
 
-```
-<Installation instructions>
-```
+`git clone https://github.com/scheeseb/bootcampChallenges.git`
+
+`npm install`
 
 ## Usage
 
-Run the following command to create a custom readme.md file.
+Run the following command to be prompted to create a custom readme.md file.
 
-```
-node index.js
-```
+`node index.js`
 
 ## Contributing
 
-You can open a pull request or issue at \<repository link>
+You can open a pull request or issue on [Github](https://github.com/scheeseb/bootcampChallenges)
 
-## Licence
+## license
 
-\<Repository name> is licensed under the \<License>
-
-## Tests
+bootcampChallenges is licensed under the The MIT License
