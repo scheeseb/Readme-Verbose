@@ -14,7 +14,7 @@ export default function generateInstallSection(gitHTTPS) {
         
 ## Usage
 
-Run the following command to be prompted to create a custom readme.md file.
+Run the following command to run the script.
 
 \`\`\`node index.js\`\`\`
 

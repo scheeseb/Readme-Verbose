@@ -68,11 +68,10 @@ Technology used to build application: ${answers.tech};
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Installation](#Installation)
-3. [Usage](#Usage)
-4. [Licenses](#Licenses)
-5. [Contributing](#Contributing)
-6. [Tests](#tests)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Licenses](#licenses)
+5. [Contributing](#contributing)
 
 ## Overview
 
@@ -82,7 +81,7 @@ ${descriptionText}
 
 ${generateInstallSection(repositoryCloneURL)}
 
-## license
+## License
 
 ${repositoryTitle} is licensed under the ${licenses.pop()}
     `;
