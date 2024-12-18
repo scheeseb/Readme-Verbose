@@ -72,6 +72,6 @@ Run the following command to be prompted to create a custom readme.md file.
 
 You can open a pull request or issue on [Github](https://github.com/scheeseb/Tic-Tac-Toe)
 
-## license
+## License
 
 Tic-Tac-Toe is licensed under the BSD 2-Clause License
