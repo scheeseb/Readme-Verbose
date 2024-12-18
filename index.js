@@ -2,7 +2,7 @@ import inquirer from "inquirer";
 import renderLicenseSection from "./utils/generateBadges.js";
 import generateVerboseDescription from "./utils/generateDescription.js";
 import generateInstallSection from "./utils/generateInstructions.js";
-import { readFile } from 'node:fs/promises'
+import { readFile, writeFile } from 'node:fs/promises'
 
 async function createReadme() {
     const existingLicenseString = await readFile("./assets/data/badges.json");
@@ -86,7 +86,12 @@ ${generateInstallSection(repositoryCloneURL)}
 ${repositoryTitle} is licensed under the ${licenses.pop()}
     `;
 
-    console.log(finalTemplate)
+    return finalTemplate
 
 }
-createReadme()
+
+async function writeNewFile(promise) {
+    const data = await promise
+    writeFile(`./output/README.md`, data, "utf-8")
+}
+writeNewFile(createReadme())
