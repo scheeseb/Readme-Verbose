@@ -8,7 +8,7 @@ async function createAIModel() {
     if (!models.some(model => model.name === "CodeGeneration:latest")) {
         const modelfile = `
         FROM codellama
-        SYSTEM "Take the following brief description and expand it into a detailed description for a README file. The expanded content should include a clear and concise explanation and any relevant details to help users understand the purpose and functionality. Ensure the tone is professional and the content is beginner-friendly but informative. Do not use any formatting or linebreaks, return a simple string"
+        SYSTEM "Take the following brief description and expand it into a single, continuous paragraph with no headers, section breaks, or formatting. Ensure the explanation is clear and beginner-friendly, providing relevant details about the purpose and functionality. Do not use lists, bullet points, or any structural elements; return only a plain block of text."
         `
         await ollama.create({ model: 'CodeGeneration', modelfile: modelfile })
         console.log("Downloaded code generation AI")
@@ -17,7 +17,7 @@ async function createAIModel() {
 
 
 export default async function generateVerboseDescription(prompt) {
-    createAIModel()
+    await createAIModel()
 
     const response = await ollama.chat({
         model: 'CodeGeneration:latest',
