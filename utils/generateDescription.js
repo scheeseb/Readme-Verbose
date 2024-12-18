@@ -2,9 +2,11 @@ import ollama from 'ollama'
 
 
 async function createAIModel() {
+    // Get the current models ollama has installed
     const list = await ollama.list()
     const models = list.models;
 
+    // Create a model with the custom definition if it does not already exist
     if (!models.some(model => model.name === "CodeGeneration:latest")) {
         const modelfile = `
         FROM codellama
@@ -17,25 +19,14 @@ async function createAIModel() {
 
 
 export default async function generateVerboseDescription(prompt) {
+    // Make sure the model exists
     await createAIModel()
 
+    // Generate the description
     const response = await ollama.chat({
         model: 'CodeGeneration:latest',
         messages: [{ role: 'user', content: prompt }],
     })
+
     return response.message.content
 }
-
-// function generateDescription() {
-
-
-//     return promptForDescription()
-//         .then(prompt => {
-//             console.log(`prompt: ${prompt}`)
-//             generateVerboseDescription(prompt)
-//                 .then(description => {
-//                     console.log(`Description: ${description}`)
-//                     return description
-//                 })
-//         })
-// }

@@ -5,15 +5,17 @@ import generateInstallSection from "./utils/generateInstructions.js";
 import { readFile, writeFile } from 'node:fs/promises'
 
 async function createReadme() {
+    // Pull all of the existing badge data
     const existingLicenseString = await readFile("./assets/data/badges.json");
     const existingLicenseData = JSON.parse(existingLicenseString)
     const existingLicenses = []
 
+    // Create an array of all the known license names
     Object.keys(existingLicenseData).forEach(license => {
         existingLicenses.push(license)
     })
 
-
+    // Ask the user for the relevant information
     const answers = await inquirer.prompt([
         {
             name: "gitHTTPS",
@@ -45,23 +47,24 @@ async function createReadme() {
 
     ]);
 
-
+    // Extract the title and url from the provided https address
+    // Save the license selected by the user
     const repositoryTitle = answers.gitHTTPS.split("/").pop().slice(0, -4);
-    const repositoryLink = answers.gitHTTPS.slice(0, -4);
     const repositoryCloneURL = answers.gitHTTPS
     const licenses = answers.license;
+    // Use the users answers to craft a custom prompt for the AI
     const customPrompt = `
 Provided Description: ${answers.description};
 The platform will run on: ${answers.useCase};
 Technology used to build application: ${answers.tech};
         `
-
+    // Render the licenses and the description
     const licenseSection = await renderLicenseSection(licenses)
     const descriptionText = await generateVerboseDescription(customPrompt)
 
 
 
-
+    // Craft the final template that will be returned
     const finalTemplate = `
 # ${repositoryTitle}
 
@@ -94,4 +97,6 @@ async function writeNewFile(promise) {
     const data = await promise
     writeFile(`./output/README.md`, data, "utf-8")
 }
+
+// Call the function to write a new file
 writeNewFile(createReadme())
