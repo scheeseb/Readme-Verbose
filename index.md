@@ -10,13 +10,15 @@
 
 ## Overview
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0https://www.gnu.org/licenses/agpl-3.0)
 
-A game of tic-tac-toe is a classic example of an application that can be built using various technologies, including web development frameworks and game engines. The purpose of this application is to create a fun and engaging experience for users by providing a simple gameplay mechanic with real-time feedback.
+A game of tic tac toe is a simple yet engaging multiplayer game that can be played by two individuals or more. The platform for this game is not specified, but it can be played in the browser or on a mobile device. The game is built using JavaScript, which is a programming language used for creating interactive web pages and web applications.
 
-In order to build this application on any platform, one can use programming languages such as JavaScript or Python, which are commonly used in web development. Web frameworks like React, Angular, or Vue.js can be utilized to create the user interface and manage the application's state. Alternatively, game engines like Phaser or Unity can be used to handle the game logic and provide a more immersive experience for players.
+When playing tic tac toe, players take turns placing their marks on a 3x3 grid of squares, with the objective of getting three of their marks in a row (horizontally, vertically, or diagonally) before their opponent does. The game is easy to learn and play, making it a great option for both beginners and experienced players alike.
 
-Overall, the goal of this application is to provide a simple but engaging gameplay mechanic that can be enjoyed by anyone, regardless of their technical expertise. The platform in which it is built will allow users to access and play the game from any device with an internet connection, making it a universal experience that can be enjoyed by people all over the world.
+To play tic tac toe, players can create an account on the platform and select the game mode they prefer. The game will then start, with one player going first and taking turns placing their marks on the grid. The other player must then make their move by placing their mark in a vacant square, with the objective of getting three of their own marks in a row to win the game.
+
+Players can also challenge friends or other players to play games of tic tac toe against them, making it a great option for socializing and competing with others. The game is simple yet engaging, making it a great option for all ages and skill levels.
 
 ## Installation
 
@@ -34,6 +36,6 @@ Run the following command to run the script.
 
 You can open a pull request or issue on [Github](https://github.com/scheeseb/Tic-Tac-Toe)
 
-## license
+## License
 
-Tic-Tac-Toe is licensed under the Apache 2.0 License
+Tic-Tac-Toe is licensed under the GNU AGPL v3
