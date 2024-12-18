@@ -30,7 +30,19 @@ async function createReadme() {
             name: "description",
             type: "input",
             message: "Enter a description of your application"
-        }
+        },
+        {
+            name: "deployment",
+            type: "list",
+            message: "Where will this application run",
+            choices: ["Node", "Browser"]
+        },
+        {
+            name: "tech",
+            type: "input",
+            message: "What technologies are implemented in this application (ie. NPM packages, JavaScript Libraries)"
+        },
+
     ]);
 
 
@@ -38,12 +50,18 @@ async function createReadme() {
     const repositoryLink = answers.gitHTTPS.slice(0, -4);
     const repositoryCloneURL = answers.gitHTTPS
     const licenses = answers.license;
-    const badgeRequest = [];
     const customPrompt = `
-        Provided Description: ${answers.description};
-        Provided use cases: ${answers.useCase};
-        Technology used to build application: ${answers.tech};
+Provided Description: ${answers.description};
+The platform will run on: ${answers.useCase};
+Technology used to build application: ${answers.tech};
         `
+
+    const licenseSection = await renderLicenseSection(licenses)
+    const descriptionText = await generateVerboseDescription(customPrompt)
+
+
+
+
     let finalTemplate = `
 # ${repositoryTitle}
 
@@ -56,32 +74,18 @@ async function createReadme() {
 5. [Contributing](#Contributing)
 6. [Tests](#tests)
 
-    `;
-
-    licenses.forEach(license => {
-        badgeRequest.push(existingLicenseData[license])
-    });
-
-
-    finalTemplate += await renderLicenseSection(licenses)
-
-    const descriptionText = answers.description
-    const section = `
 ## Overview
 
+${licenseSection}
+
 ${descriptionText}
-`;
 
-    finalTemplate += section
+${generateInstallSection(repositoryCloneURL)}
 
-
-    finalTemplate += generateInstallSection(repositoryCloneURL)
-
-    finalTemplate += `
 ## license
 
 ${repositoryTitle} is licensed under the ${licenses.pop()}
-    `
+    `;
 
     console.log(finalTemplate)
 
