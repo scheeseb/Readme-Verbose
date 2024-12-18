@@ -83,7 +83,7 @@ ${generateInstallSection(repositoryCloneURL)}
 
 ## License
 
-${repositoryTitle} is licensed under the ${licenses.pop()}
+${repositoryTitle} is licensed under ${licenses.pop()}
     `;
 
     return finalTemplate
