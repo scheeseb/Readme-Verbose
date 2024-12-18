@@ -62,7 +62,7 @@ Technology used to build application: ${answers.tech};
 
 
 
-    let finalTemplate = `
+    const finalTemplate = `
 # ${repositoryTitle}
 
 ## Table of Contents
@@ -70,8 +70,8 @@ Technology used to build application: ${answers.tech};
 1. [Overview](#overview)
 2. [Installation](#installation)
 3. [Usage](#usage)
-4. [Licenses](#licenses)
-5. [Contributing](#contributing)
+4. [Contributing](#contributing)
+5. [License](#license)
 
 ## Overview
 
