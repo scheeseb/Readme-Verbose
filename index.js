@@ -1,7 +1,6 @@
 import inquirer from "inquirer";
 import renderLicenseSection from "./utils/generateBadges.js";
 import generateVerboseDescription from "./utils/generateDescription.js";
-import generateInstallSection from "./utils/generateInstructions.js";
 import { readFile, writeFile } from 'node:fs/promises'
 
 async function createReadme() {
