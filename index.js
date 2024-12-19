@@ -1,50 +1,14 @@
 import inquirer from "inquirer";
 import renderLicenseSection from "./utils/generateBadges.js";
 import generateVerboseDescription from "./utils/generateDescription.js";
-import { readFile, writeFile } from 'node:fs/promises'
+import gatherInfo from "./utils/prompt.js";
+import { writeFile } from 'node:fs/promises'
 
 async function createReadme() {
-    // Pull all of the existing badge data
-    const existingLicenseString = await readFile("./assets/data/badges.json");
-    const existingLicenseData = JSON.parse(existingLicenseString)
-    const existingLicenses = []
 
-    // Create an array of all the known license names
-    Object.keys(existingLicenseData).forEach(license => {
-        existingLicenses.push(license)
-    })
 
     // Ask the user for the relevant information
-    const answers = await inquirer.prompt([
-        {
-            name: "gitHTTPS",
-            type: "input",
-            message: 'Enter the Github repository https address (Ends in ".git")',
-        },
-        {
-            name: "license",
-            type: "checkbox",
-            message: 'What license is the project under',
-            choices: existingLicenses
-        },
-        {
-            name: "description",
-            type: "input",
-            message: "Enter a description of your application"
-        },
-        {
-            name: "deployment",
-            type: "list",
-            message: "Where will this application run",
-            choices: ["Node", "Browser"]
-        },
-        {
-            name: "tech",
-            type: "input",
-            message: "What technologies are implemented in this application (ie. NPM packages, JavaScript Libraries)"
-        },
-
-    ]);
+    const answers = await gatherInfo()
 
     // Extract the title and url from the provided https address
     // Save the license selected by the user
@@ -54,6 +18,7 @@ async function createReadme() {
     const licenses = answers.license;
     // Use the users answers to craft a custom prompt for the AI
     const customPrompt = `
+Repository Title: ${repositoryTitle}
 Provided Description: ${answers.description};
 The platform will run on: ${answers.useCase};
 Technology used to build application: ${answers.tech};
