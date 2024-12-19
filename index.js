@@ -50,6 +50,7 @@ async function createReadme() {
     // Extract the title and url from the provided https address
     // Save the license selected by the user
     const repositoryTitle = answers.gitHTTPS.split("/").pop().slice(0, -4);
+    const repositoryLink = answers.gitHTTPS.slice(0, -4);
     const repositoryCloneURL = answers.gitHTTPS
     const licenses = answers.license;
     // Use the users answers to craft a custom prompt for the AI
@@ -61,7 +62,16 @@ Technology used to build application: ${answers.tech};
     // Render the licenses and the description
     const licenseSection = await renderLicenseSection(licenses)
     const descriptionText = await generateVerboseDescription(customPrompt)
+    const usage = () => {
+        if (answers.deployment === "Node") {
+            return `
+Run the following command to run the script.
 
+\`\`\`node index.js\`\`\``
+        } else if (answers.deployment === "Browser") {
+            return `Open the index.html in your browser or see our deployment on [Githib](${repositoryLink})`
+        }
+    }
 
 
     // Craft the final template that will be returned
@@ -82,7 +92,19 @@ ${licenseSection}
 
 ${descriptionText}
 
-${generateInstallSection(repositoryCloneURL)}
+## Installation
+
+\`\`\`git clone ${repositoryCloneURL}\`\`\`
+
+\`\`\`npm install\`\`\`
+        
+## Usage
+
+${usage}
+
+## Contributing                                                                           
+
+You can open a pull request or issue on [Github](${repositoryLink})
 
 ## License
 
