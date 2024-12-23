@@ -4,13 +4,11 @@ import { readFile } from 'node:fs/promises'
 export default async function gatherInfo() {
     // Pull all of the existing badge data
     const existingLicenseString = await readFile("./assets/data/badges.json");
-    const existingLicenseData = JSON.parse(existingLicenseString)
-    const existingLicenses = []
-
+    const existingLicenseData = JSON.parse(existingLicenseString);
     // Create an array of all the known license names
-    Object.keys(existingLicenseData).forEach(license => {
-        existingLicenses.push(license)
-    })
+    const existingLicenses = Object.keys(existingLicenseData)
+
+
 
     const answers = await inquirer.prompt([
         {
@@ -32,16 +30,27 @@ export default async function gatherInfo() {
         {
             name: "deployment",
             type: "list",
-            message: "Where will this application run",
-            choices: ["Node", "Browser"]
+            message: "Where will this application run?",
+            choices: ["Node", "Browser", "Other"]
         },
         {
             name: "tech",
             type: "input",
-            message: "What technologies are implemented in this application (ie. NPM packages, JavaScript Libraries)"
+            message: "What technologies are implemented in this application (ie. NPM packages, JavaScript Libraries)?"
         },
 
     ]);
 
     return answers
+}
+
+
+async function askAboutNode() {
+    const answers = await inquirer.prompt([
+        {
+            name: "script",
+            type: "input",
+            message: 'What command will be used to illicit the program?',
+        },
+    ])
 }
