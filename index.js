@@ -9,6 +9,7 @@ async function createReadme() {
 
     // Ask the user for the relevant information
     const answers = await gatherInfo()
+    console.log(answers)
 
     // Extract the title and url from the provided https address
     // Save the license selected by the user
@@ -26,14 +27,23 @@ Technology used to build application: ${answers.tech};
     // Render the licenses and the description
     const licenseSection = await renderLicenseSection(licenses)
     const descriptionText = await generateVerboseDescription(customPrompt)
-    const usage = () => {
+    const installCommand = () => {
         if (answers.deployment === "Node") {
+            return `npm install`
+        } else if (answers.deployment === "Other") {
+            return answers.required
+        }
+
+        return ``
+    }
+    const usage = () => {
+        if (answers.deployment === "Browser") {
+            return `Open the index.html in your browser or see our deployment on [Githib](${repositoryLink})`
+        } else {
             return `
 Run the following command to run the script.
 
-\`\`\`node index.js\`\`\``
-        } else if (answers.deployment === "Browser") {
-            return `Open the index.html in your browser or see our deployment on [Githib](${repositoryLink})`
+\`\`\`${answers.usage}\`\`\``
         }
     }
 
@@ -60,11 +70,12 @@ ${descriptionText}
 
 \`\`\`git clone ${repositoryCloneURL}\`\`\`
 
-\`\`\`npm install\`\`\`
+\`\`\`${installCommand()}\`\`\`
+
         
 ## Usage
 
-${usage}
+${usage()}
 
 ## Contributing                                                                           
 

@@ -41,11 +41,14 @@ export default async function gatherInfo() {
 
     ]);
 
+    if (answers.deployment != "Browser") { answers.usage = await usageDetails() }
+    if (answers.deployment === "Other") { answers.required = await installDetails() }
+
     return answers
 }
 
 
-async function askAboutNode() {
+async function usageDetails() {
     const answers = await inquirer.prompt([
         {
             name: "script",
@@ -53,4 +56,18 @@ async function askAboutNode() {
             message: 'What command will be used to illicit the program?',
         },
     ])
+
+    return answers.script
+}
+
+async function installDetails() {
+    const answers = await inquirer.prompt([
+        {
+            name: "required",
+            type: "input",
+            message: 'If installations are required, provide the command below.',
+        },
+    ])
+
+    return answers.required
 }
