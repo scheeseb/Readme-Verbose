@@ -77,10 +77,3 @@ export default async function renderLicenseSection(licenseData) {
 
   return finalTemplate;
 }
-
-class NewBadge {
-  constructor(name, url) {
-    this.name = name;
-    this.url = url
-  }
-}
