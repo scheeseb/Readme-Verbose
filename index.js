@@ -29,7 +29,7 @@ Technology used to build application: ${answers.tech};
     const descriptionText = await generateVerboseDescription(customPrompt)
     const installCommand = () => {
         if (answers.deployment === "Node") {
-            return `npm install`
+            return `\`\`\`npm install\`\`\``
         } else if (answers.deployment === "Other") {
             return answers.required
         }
@@ -70,7 +70,7 @@ ${descriptionText}
 
 \`\`\`git clone ${repositoryCloneURL}\`\`\`
 
-\`\`\`${installCommand()}\`\`\`
+${installCommand()}
 
         
 ## Usage
