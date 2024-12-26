@@ -1,14 +1,12 @@
-import inquirer from "inquirer";
 import renderLicenseSection from "./utils/generateBadges.js";
 import generateVerboseDescription from "./utils/generateDescription.js";
 import gatherInfo from "./utils/prompt.js";
 import { writeFile } from 'node:fs/promises'
 
 async function createReadme() {
-
-
     // Ask the user for the relevant information
     const answers = await gatherInfo()
+    console.log(answers)
 
     // Extract the title and url from the provided https address
     // Save the license selected by the user
@@ -26,14 +24,23 @@ Technology used to build application: ${answers.tech};
     // Render the licenses and the description
     const licenseSection = await renderLicenseSection(licenses)
     const descriptionText = await generateVerboseDescription(customPrompt)
-    const usage = () => {
+    const installCommand = () => {
         if (answers.deployment === "Node") {
+            return `\`\`\`npm install\`\`\``
+        } else if (answers.deployment === "Other") {
+            return answers.required
+        }
+
+        return ``
+    }
+    const usage = () => {
+        if (answers.deployment === "Browser") {
+            return `Open the index.html in your browser or see our deployment on [Githib](${repositoryLink})`
+        } else {
             return `
 Run the following command to run the script.
 
-\`\`\`node index.js\`\`\``
-        } else if (answers.deployment === "Browser") {
-            return `Open the index.html in your browser or see our deployment on [Githib](${repositoryLink})`
+\`\`\`${answers.usage}\`\`\``
         }
     }
 
@@ -44,11 +51,11 @@ Run the following command to run the script.
 
 ## Table of Contents
 
-1. [Overview](#Overview)
-2. [Installation](#Installation)
-3. [Usage](#Usage)
-4. [Contributing](#Contributing)
-5. [License](#License)
+1. [Overview](#overview)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Contributing](#contributing)
+5. [License](#license)
 
 ## Overview
 
@@ -60,11 +67,12 @@ ${descriptionText}
 
 \`\`\`git clone ${repositoryCloneURL}\`\`\`
 
-\`\`\`npm install\`\`\`
+${installCommand()}
+
         
 ## Usage
 
-${usage}
+${usage()}
 
 ## Contributing                                                                           
 
