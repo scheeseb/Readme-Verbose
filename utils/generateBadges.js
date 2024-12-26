@@ -77,4 +77,3 @@ export default async function renderLicenseSection(licenseData) {
 
   return finalTemplate;
 }
-test
