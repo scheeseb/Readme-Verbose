@@ -1,12 +1,9 @@
-import inquirer from "inquirer";
 import renderLicenseSection from "./utils/generateBadges.js";
 import generateVerboseDescription from "./utils/generateDescription.js";
 import gatherInfo from "./utils/prompt.js";
 import { writeFile } from 'node:fs/promises'
 
 async function createReadme() {
-
-
     // Ask the user for the relevant information
     const answers = await gatherInfo()
     console.log(answers)
