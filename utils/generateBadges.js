@@ -6,7 +6,6 @@ import { readFile } from 'node:fs/promises';
 async function renderKnownBadge(license) {
   // Check if the license is a string and doesn't contain invalid characters. Returns error if not
   if (typeof license != "string") { return console.error("License argument must be a string") };
-  if (!/^[a-zA-Z0-9 .,/_\-()]*$/.test(license)) { return console.error("License contains an unallowed character") };
 
   const dataString = await readFile("assets/data/badges.json", "utf-8")
 
