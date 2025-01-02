@@ -27,10 +27,12 @@ async function renderKnownBadge(license) {
 function renderCustomBadge(licenseString, url) {
   // Check if the title is a string and doesn't contain invalid characters. Returns error if not
   if (typeof licenseString != "string") { return console.error("LicenseString argument must be a string") };
-  if (!/^[a-zA-Z0-9., / _ - ()]*$/.test(licenseString)) { return console.error("LicenseString contains an unallowed character") };
   // Check if the URL is a string and is a valid url format. Returns error if not
   if (typeof url != "string") { return console.error("License URL argument must be a string") };
-  if (!/^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/[^\s]*)?$/.test(url)) { return console.error("License URL contains an unallowed character") };
+
+  // I just wanted to try regex
+  // if (!/^[a-zA-Z0-9., / _ - ()]*$/.test(licenseString)) { return console.error("LicenseString contains an unallowed character") };
+  // if (!/^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/[^\s]*)?$/.test(url)) { return console.error("License URL contains an unallowed character") };
 
   // This is the required format for the makeBadge
   const format = {
